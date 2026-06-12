@@ -2,10 +2,16 @@ package io.spring.image.demo.domain.service;
 
 
 import io.spring.image.demo.domain.entity.Image;
+import io.spring.image.demo.domain.enums.ImageExtension;
 
 import java.util.Optional;
+import java.util.List;
 
 public interface ImageService {
-    Image save (Image image);
+    //salva imagem
+    Image save(Image image);
+    //retorna imagem
     Optional<Image> getById(String id);
+
+    List<Image> search(ImageExtension extension, String query);
 }

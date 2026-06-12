@@ -49,16 +49,6 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.mariadb.jdbc</groupId>
-			<artifactId>mariadb-java-client</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
@@ -84,12 +74,6 @@
 			<version>24.0.0</version>
 			<scope>compile</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>com.sun.xml.messaging.saaj</groupId>
-			<artifactId>saaj-impl</artifactId>
-			<version>3.0.4</version>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -100,7 +84,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 
 </project>
