@@ -1,3 +1,4 @@
+import { PrimeiroComponente } from "./components/PrimeiroComponente";
 
 
 export default function Home() {
@@ -5,6 +6,8 @@ export default function Home() {
     <div>
       <main>
         <h1>Welcome to Next.js!</h1>
+        <PrimeiroComponente mensagem= "Olá mundo"/>
+        <PrimeiroComponente mensagemBotao="Primeiro botão selecionado" mensagem={""}/>
       </main>
     </div>
 
