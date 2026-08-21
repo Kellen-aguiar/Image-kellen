@@ -1,6 +1,7 @@
 //import { Template } from '../components/Template';
   //import { ImageCard } from '../components/Image';
-  import { Template, ImageCard } from '../components';
+  import {  Template, ImageCard } from '../components';
+
   
   
   
