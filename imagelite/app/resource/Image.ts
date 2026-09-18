@@ -1,5 +1,6 @@
 export class Image{
 
+    key?: string
     url?: string
     name?: string
     extension?: string
