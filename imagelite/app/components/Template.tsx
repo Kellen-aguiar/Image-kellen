@@ -15,7 +15,7 @@ export const Template = ({ children }: TemplateProps) => {
 }
 const Header: React.FC = () => {
     return(
-        <header className="bg-red-900 text-white py-3">
+        <header className="bg-purple-900 text-white py-3">
         <div className="container mx-auto px-4 flex justify-between items-center px-4">
             <h1>ImageLite</h1>
             </div>
@@ -24,7 +24,7 @@ const Header: React.FC = () => {
 }
 const Footer: React.FC = () => {
     return(
-        <footer className="bg-red-950 text-white py-3">
+        <footer className="bg-purple-950 text-white py-3">
         <div className="container mx-auto px-4 flex justify-between items-center px-4">
             <h1>Developed by Kellen Aguiar</h1>
             </div>
