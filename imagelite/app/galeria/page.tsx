@@ -1,22 +1,36 @@
 'use client'; 
 
-import { Template, ImageCard } from '../components'; 
+import { Template, ImageCard, Button } from '../components'; 
 import { Image } from '../resource/Image'; 
 import { ImageService, useImageService } from '../resource/Service'; 
 import { useState } from 'react'; 
+import { useRouter } from 'next/navigation';
+
  
 export default function Galeria() { 
  
+  const router = useRouter();
   const useService = useImageService(); 
   const [images, setImage] = useState<Image[]>([]);  
   const [query, setQuery] = useState<string>(''); 
   const [extension, setExtension] = useState<string>(''); 
+  const [loading, setLoading] = useState<boolean>(false);
  
-  async function searchImages() { 
-    const result = await useService.buscar(query, extension); 
-    setImage(result); 
-    console.log(query, extension); 
-  } 
+  
+async function searchImages() {
+  setLoading(true);
+
+  try {
+    const result = await useService.buscar(query, extension);
+    setImage(result);
+    console.log(query, extension);
+  } catch (error) {
+    console.error('Erro ao buscar imagens:', error);
+  } finally {
+    setLoading(false);
+  }
+}
+
  
   /* renderizando a imagem na tela */ 
   function renderImageCard(image: Image) { 
@@ -94,19 +108,30 @@ export default function Galeria() {
               Search 
             </button> 
 
-            <button 
-              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-            > 
-              Add New 
-            </button> 
+          <Button
+            type="button"
+            variant="danger"
+            onClick={() => router.push('/upload')}
+          >
+            Add New
+          </Button>
 
           </div> 
                
         </section> 
  
-        <section className="grid grid-cols-4 gap-4 p-4"> 
-          {renderImageCards()} 
-        </section> 
+     
+        {loading ? (
+          <div className="flex justify-center items-center p-10">
+            <p className="text-xl font-bold text-black-700">
+              Carregando...
+            </p>
+          </div>
+        ) : (
+          <section className="grid grid-cols-4 gap-4 p-4">
+            {renderImageCards()}
+          </section>
+        )}
 
       </div>
 
