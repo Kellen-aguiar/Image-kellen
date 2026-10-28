@@ -1,4 +1,11 @@
 package io.spring.image.demo.domain;
 
-public class AcesssToken {
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@AllArgsConstructor
+@Data
+public class AccessToken {
+    private String accessToken;
 }
