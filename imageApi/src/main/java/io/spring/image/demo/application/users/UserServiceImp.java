@@ -38,6 +38,19 @@ public class UserServiceImp implements UserService {
 
     @Override
     public AccessToken autenticate(String email, String password) {
+        ver user = getByEmail(email);
+        if(user==null){
+            return null;
+        }
+        boolean matches = passwordEncoder.matches(password, user.getPassword());
+        if(matches){
+            return jwtService.generateToken(user);
+        }
         return null;
+    }
+    private void encodePassword (User user){
+        String rawPassword = user.getPassword();
+        String encodePassword = passwordEncoder.encode(rawPassword);
+        user.setPassword(encodePassword);
     }
 }
