@@ -1,5 +1,6 @@
 package io.spring.image.demo.application.users;
 
+import io.spring.image.demo.application.jwt.JwtService;
 import io.spring.image.demo.domain.AccessToken;
 import io.spring.image.demo.domain.entity.User;
 import io.spring.image.demo.domain.exception.DuplocatedTupleExeption;
@@ -34,11 +35,12 @@ public class UserServiceImp implements UserService {
         }
 
         encodePassword(user);
+        return userRepository.save(user);
     }
 
     @Override
     public AccessToken autenticate(String email, String password) {
-        ver user = getByEmail(email);
+        var user = getByEmail(email);
         if(user==null){
             return null;
         }

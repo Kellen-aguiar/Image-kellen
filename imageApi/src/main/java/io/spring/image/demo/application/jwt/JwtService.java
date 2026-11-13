@@ -2,13 +2,14 @@ package io.spring.image.demo.application.jwt;
 
 
 import io.jsonwebtoken.Jwts;
-import io.spring.image.demo.AccessToken;
+import io.spring.image.demo.domain.AccessToken;
 import io.spring.image.demo.domain.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +36,7 @@ public class JwtService {
     private Date generateExpirationDate(){
         var expirationMinutes = 60;
         LocalDateTime now = LocalDateTime.now().plusMinutes(expirationMinutes);
-        return Date.from(now.atZone(ZoneId.systenDefault()).toInstant());
+        return Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
     }
 
     private Map<String, Object> generateTokenClaims(User user){
